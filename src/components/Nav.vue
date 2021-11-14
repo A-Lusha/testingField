@@ -2,7 +2,7 @@
 
 <nav class="sidenav" :class="{ 'sidenav--closed': !navOpen }">
   <div class="sidenav-btn" @click="toggleNav">
-    <span class="sidenav-btn__icon" >&nbsp;</span>
+    <span class="sidenav-btn__icon" :class="{ 'sidenav-btn__icon--opened': navOpen }">&nbsp;</span>
   </div>
   <div class="sidenav-content" :class="{ 'sidenav-content--closed': !navOpen }">
     <div class="sidenav-content__logo">
@@ -122,47 +122,73 @@ export default {
   }
 
   &-btn {
-      float: right;
-      height: 45px;
-      width: 45px;
-      /* top | right | bottom | left */
-      margin: 15px 15px 15px 0;
-      background-color: $color-tertiary-dark;
-      cursor: pointer;
-      border-radius: 50%;
-      transition: all .3s;
+    float: right;
+    height: 45px;
+    width: 45px;
+    /* top | right | bottom | left */
+    margin: 15px 10px 15px 0;
+    background-color: $color-tertiary-dark;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all .3s;
 
-      &:hover {
-        background-color: $color-tertiary-light;
-        transform: translateY(-3px);
-        box-shadow: 0 1rem 2rem rgba($color-black,.2);
+    &:hover {
+      background-color: $color-tertiary-light;
+      transform: translateY(-3px);
+      box-shadow: 0 1rem 2rem rgba($color-black,.2);
+    }
+
+    &__icon {
+      position: relative;
+      margin-top: 2.1rem;
+      margin-left: 1rem;
+
+      &,
+      &::before,
+      &::after {
+          width: 2.5rem;
+          height: 2px;
+          background-color: $color-grey-dark-3;
+          display: inline-block;
       }
 
-      &__icon {
-        position: relative;
-        margin-top: 2.1rem;
-        margin-left: 1rem;
+      &::before,
+      &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          transition: all .2s;
+      }
 
-        &,
-        &::before,
-        &::after {
-            width: 2.5rem;
-            height: 2px;
-            background-color: $color-grey-dark-3;
-            display: inline-block;
-        }
+      &::before { top: -.8rem; }
+      &::after { top: .8rem; }
 
-        &::before,
-        &::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            transition: all .2s;
-        }
+      &--opened {
+        background-color: transparent;
+      }
+      &--opened::before {
+        top: 0;
+        transform: rotate(135deg);
+      }
+      &--opened::after {
+          top: 0;
+          transform: rotate(-135deg);
+      }
 
-        &::before { top: -.8rem; }
-        &::after { top: .8rem; }
     }
+    // &__checkbox:checked + &__button &__icon {
+
+    // }
+
+    // &__checkbox:checked + &__button &__icon::before {
+    //     top: 0;
+    //     transform: rotate(135deg);
+    // }
+
+    // &__checkbox:checked + &__button &__icon::after {
+    //     top: 0;
+    //     transform: rotate(-135deg);
+    // }
   }
 }
 
