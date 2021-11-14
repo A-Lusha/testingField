@@ -1,11 +1,9 @@
 <template>
 
 <nav class="sidenav" :class="{ 'sidenav--closed': !navOpen }">
-
   <div class="sidenav-btn" @click="toggleNav">
     <span class="sidenav-btn__icon" >&nbsp;</span>
   </div>
-
   <div class="sidenav-content" :class="{ 'sidenav-content--closed': !navOpen }">
     <div class="sidenav-content__logo">
       &nbsp;
@@ -15,20 +13,20 @@
       <router-link class="sidenav-content__link" to="/About" @click="toggleNav">About</router-link>
     </div>
     <div class="sidenav-content__footer">
-      &nbsp;
+      <p>Alex</p>
     </div>
   </div>
-
 </nav>
 
 </template>
 
 <script>
+
 export default {
   name: 'AppNav',
   data() {
     return {
-      navOpen: true,
+      navOpen: false,
     };
   },
   methods: {
@@ -38,6 +36,7 @@ export default {
   },
 
 };
+
 </script>
 
 <style lang="scss" scoped>
@@ -51,7 +50,7 @@ export default {
   left: 0;
   background-color: $color-grey-dark-2;
   overflow-x: hidden;
-  transition: all .3s ease-in-out;
+  transition: all .4s ease-in-out;
   box-shadow: 0 1rem 2rem rgba($color-black,.2);
 
   &--closed{
@@ -82,7 +81,8 @@ export default {
     }
 
     &__body {
-
+      display: block;
+      /* placeholder for future editing */
     }
 
     &__link {
@@ -91,22 +91,33 @@ export default {
       font-size: 25px;
       color: $color-tertiary-light;
       padding: 1.5rem 3rem;
-      transition: .4s;
+      transition: .2s;
       border-left: solid 1rem $color-tertiary-dark;
+
+      &.router-link-active{
+        /* style for active class */
+        background-color: $color-grey-dark-1;
+        border-left: solid 2rem $color-tertiary-dark;
+      }
 
       &:hover {
         color: #f1f1f1;
         background-color: $color-primary-dark;
-        border-left: solid 1rem $color-primary-light;
+        border-left: solid 2rem $color-primary-light;
+      }
+      &:focus{
+        border-left: solid 30rem $color-primary-light;
       }
     }
 
     &__footer {
       position: absolute;
       bottom: 0;
-      height: px;
       width: 100%;
+      padding: 10px 5px;
       background-color: $color-black;
+      color: $color-grey-light-2;
+      font-size: 1.2rem;
     }
   }
 
@@ -154,4 +165,5 @@ export default {
     }
   }
 }
+
 </style>
