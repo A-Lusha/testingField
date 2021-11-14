@@ -1,10 +1,11 @@
 <template>
 
-<nav class="sidenav" :class="{ 'sidenav--closed': !navOpen }">
-  <div class="sidenav-btn" @click="toggleNav">
-    <span class="sidenav-btn__icon" :class="{ 'sidenav-btn__icon--opened': navOpen }">&nbsp;</span>
-  </div>
-  <span class="sidenav__spacer"></span>
+<nav class="sidenav">
+  <div
+    class="sidenav__background"
+    :class="{ 'sidenav__background--closed': !navOpen }"
+    @click="toggleNav"
+  ></div>
   <div class="sidenav-content" :class="{ 'sidenav-content--closed': !navOpen }">
     <div class="sidenav-content__logo">
       &nbsp;
@@ -13,6 +14,7 @@
         felt like something should be here
       -->
     </div>
+    <span class="sidenav__spacer"></span>
     <div class="sidenav-content__body">
       <router-link
         class="sidenav-content__link"
@@ -24,10 +26,9 @@
         {{ link.name }}
       </router-link>
     </div>
-    <!-- <div class="sidenav-content__footer">
-      &nbsp;
-      some sort of copyright, info, or profile info?
-    </div> -->
+  </div>
+  <div class="sidenav-btn" @click="toggleNav">
+    <span class="sidenav-btn__icon" :class="{ 'sidenav-btn__icon--opened': navOpen }">&nbsp;</span>
   </div>
 </nav>
 
@@ -39,7 +40,7 @@ export default {
   name: 'AppNav',
   data() {
     return {
-      navOpen: true,
+      navOpen: false,
       navLinks: [
         {
           name: 'Home',
@@ -77,31 +78,42 @@ export default {
 <style lang="scss" scoped>
 
 .sidenav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 300px;
-  z-index: 10;
-  overflow: hidden;
-  background-color: $color-grey-dark-2;
-  box-shadow: 0 1rem 2rem rgba($color-black,.2);
   font-weight: 300;
-  transition: all .4s ease-in-out;
 
-  &--closed{
-    transform: translate(-210px, 0);
-    background-color: inherit;
-    box-shadow: none;
-    overflow-y: hidden;
+  &__background {
+    position: fixed;
+    z-index: 5;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.7);
+    transition: all .3s;
+
+    &--closed{
+      opacity: 0;
+      pointer-events: none;
+    }
   }
 
   &-content {
-    display: flex;
-    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
     height: 100%;
+    width: 300px;
+    z-index: 10;
+    overflow-x: hidden;
+    background-color: $color-grey-dark-2;
+    box-shadow: 0 1rem 2rem rgba($color-black,.2);
+    transition: all .4s;
 
     &--closed{
+      transform: translate(-210px, 0);
+      background-color: inherit;
+      box-shadow: none;
+      overflow-y: hidden;
       width: 0;
       opacity: 0;
     }
@@ -148,21 +160,16 @@ export default {
         border-left: solid 30rem $color-primary-light;
       }
     }
-
-    // &__footer {
-    //   padding: 10px 5px;
-    //   background-color: $color-black;
-    //   color: $color-grey-light-2;
-    //   font-size: 1.2rem;
-    // }
   }
 
   &-btn {
+    /* TODO (maybe): move button to other side when viewport is small*/
     position: absolute;
     bottom: 15px;
     right: 10px;
     height: 65px;
     width: 65px;
+    z-index: 20;
     background-color: $color-tertiary-dark;
     border-radius: 50%;
     cursor: pointer;
