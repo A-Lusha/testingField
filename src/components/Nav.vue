@@ -4,6 +4,7 @@
   <div class="sidenav-btn" @click="toggleNav">
     <span class="sidenav-btn__icon" :class="{ 'sidenav-btn__icon--opened': navOpen }">&nbsp;</span>
   </div>
+  <span class="sidenav__spacer"></span>
   <div class="sidenav-content" :class="{ 'sidenav-content--closed': !navOpen }">
     <div class="sidenav-content__logo">
       &nbsp;
@@ -23,10 +24,10 @@
         {{ link.name }}
       </router-link>
     </div>
-    <div class="sidenav-content__footer">
+    <!-- <div class="sidenav-content__footer">
       &nbsp;
-      <!-- some sort of copyright, info, or profile info? -->
-    </div>
+      some sort of copyright, info, or profile info?
+    </div> -->
   </div>
 </nav>
 
@@ -38,7 +39,7 @@ export default {
   name: 'AppNav',
   data() {
     return {
-      navOpen: false,
+      navOpen: true,
       navLinks: [
         {
           name: 'Home',
@@ -46,7 +47,19 @@ export default {
         },
         {
           name: 'About',
-          to: '/About',
+          to: '/about',
+        },
+        {
+          name: 'Projects',
+          to: '/projects',
+        },
+        {
+          name: 'Contact',
+          to: '/contact',
+        },
+        {
+          name: 'FAQs',
+          to: '/faqs',
         },
       ],
     };
@@ -65,24 +78,28 @@ export default {
 
 .sidenav {
   position: fixed;
-  height: 100%;
-  width: 250px;
-  z-index: 10;
   top: 0;
   left: 0;
-  overflow-x: hidden;
+  height: 100%;
+  width: 300px;
+  z-index: 10;
+  overflow: hidden;
   background-color: $color-grey-dark-2;
   box-shadow: 0 1rem 2rem rgba($color-black,.2);
   font-weight: 300;
   transition: all .4s ease-in-out;
 
   &--closed{
-    transform: translate(-180px, 0);
+    transform: translate(-210px, 0);
     background-color: inherit;
     box-shadow: none;
+    overflow-y: hidden;
   }
 
   &-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 
     &--closed{
       width: 0;
@@ -90,13 +107,9 @@ export default {
     }
 
     &__logo {
-        display: inline-block;
-        height: 100px;
-        width: 180px;
+        height: 125px;
         margin: 5px;
         padding-top: 25px;
-        text-align: center;
-        font-size: $default-font-size;
         background-color: $color-grey-dark-1;
         border: dashed 3px $color-grey-dark-3;
         cursor: pointer;
@@ -108,8 +121,7 @@ export default {
     }
 
     &__body {
-      display: block;
-      /* placeholder for future editing */
+      // links container for organazation purposes
     }
 
     &__link {
@@ -137,44 +149,41 @@ export default {
       }
     }
 
-    &__footer {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      padding: 10px 5px;
-      background-color: $color-black;
-      color: $color-grey-light-2;
-      font-size: 1.2rem;
-    }
+    // &__footer {
+    //   padding: 10px 5px;
+    //   background-color: $color-black;
+    //   color: $color-grey-light-2;
+    //   font-size: 1.2rem;
+    // }
   }
 
   &-btn {
-    float: right;
-    height: 45px;
-    width: 45px;
-    margin: 15px 10px 15px 0;
-    /* ^ top | right | bottom | left - because I keep fucking forgetting */
+    position: absolute;
+    bottom: 15px;
+    right: 10px;
+    height: 65px;
+    width: 65px;
     background-color: $color-tertiary-dark;
-    cursor: pointer;
     border-radius: 50%;
+    cursor: pointer;
     transition: all .3s;
 
     &:hover {
       background-color: $color-tertiary-light;
-      transform: translateY(-3px);
       box-shadow: 0 1rem 2rem rgba($color-black,.2);
+      transform: translateY(-3px);
     }
 
     &:active,
     &:focus {
-        transform: translateY(-1px);
         box-shadow: 0 .5rem 1rem rgba($color-black,.2);
+        transform: translateY(-1px);
     }
 
     &__icon {
       position: relative;
-      margin-top: 2.1rem;
-      margin-left: 1rem;
+      margin-top: 3rem;
+      margin-left: 2rem;
 
       &,
       &::before,
