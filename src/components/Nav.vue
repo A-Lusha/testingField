@@ -7,13 +7,14 @@
   <div class="sidenav-content" :class="{ 'sidenav-content--closed': !navOpen }">
     <div class="sidenav-content__logo">
       &nbsp;
+      <!-- section for a logo or tagline maybe? felt like something should be here -->
     </div>
     <div class="sidenav-content__body" >
       <router-link class="sidenav-content__link" to="/" @click="toggleNav">Home</router-link>
       <router-link class="sidenav-content__link" to="/About" @click="toggleNav">About</router-link>
     </div>
     <div class="sidenav-content__footer">
-      <p>Alex</p>
+      <p>Maybe user profile info here?</p>
     </div>
   </div>
 </nav>
@@ -42,16 +43,17 @@ export default {
 <style lang="scss" scoped>
 
 .sidenav {
+  position: fixed;
   height: 100%;
   width: 250px;
-  position: fixed;
   z-index: 10;
   top: 0;
   left: 0;
-  background-color: $color-grey-dark-2;
   overflow-x: hidden;
-  transition: all .4s ease-in-out;
+  background-color: $color-grey-dark-2;
   box-shadow: 0 1rem 2rem rgba($color-black,.2);
+  font-weight: 300;
+  transition: all .4s ease-in-out;
 
   &--closed{
     transform: translate(-180px, 0);
@@ -69,9 +71,13 @@ export default {
     &__logo {
         display: inline-block;
         height: 100px;
-        width: 175px;
+        width: 180px;
         margin: 5px;
+        padding-top: 25px;
+        text-align: center;
+        font-size: $default-font-size;
         background-color: $color-grey-dark-1;
+        border: dashed 3px $color-grey-dark-3;
         cursor: pointer;
         transition: all .3s;
 
