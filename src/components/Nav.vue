@@ -1,16 +1,15 @@
 <template>
 
-<div class="navContainer">
-  <div class="navLinks" :style="navOpen ? 'width:150px;' : 'width:0;'">
-    <router-link to="/" @click="toggleNav">Home</router-link>
-    <router-link to="/About" @click="toggleNav">About</router-link>
+<nav class="sidenav" :class="{ 'sidenav--closed': !navOpen }">
+  <!-- animate this icon later -->
+  <a href="#" class="sidenav__btn" @click.prevent="toggleNav">
+    {{ navOpen ? '&times;' : '&#9776;' }}
+  </a>
+  <div class="sidenav__link-group" :class="{ 'sidenav__link-group--closed': !navOpen }">
+    <router-link class="sidenav__link" to="/" @click="toggleNav">Home</router-link>
+    <router-link class="sidenav__link" to="/About" @click="toggleNav">About</router-link>
   </div>
-  <div class="navIcons">
-    <a href="#" class="closebtn" @click.prevent="toggleNav">
-      {{ navOpen ? '&times;' : '&#9776;' }}
-    </a>
-  </div>
-</div>
+</nav>
 
 </template>
 
@@ -33,43 +32,50 @@ export default {
 
 <style lang="scss" scoped>
 
-.navContainer {
+.sidenav {
   height: 100%;
+  width: 200px;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   top: 0;
   left: 0;
   background-color: $color-grey-dark-2;
   overflow-x: hidden;
-  transition: all .3s;
+  transition: all .3s ease-in-out;
   padding-top: 60px;
 
-  a {
-    padding: 8px 8px; // 8px 32px;
+  &--closed{
+    transform: translate(-150px, 0);
+  }
+
+  &__btn {
+    position: absolute;
+    top: 5px;
+    right: 12.5px;
+    text-decoration: none;
+    font-size: 3rem;
+  }
+
+  &__link-group {
+
+    &--closed{
+      width: 0;
+    }
+  }
+
+  &__link {
+    display: block;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
+    color: $color-primary-light;
+    padding: 1.5rem 3rem;
+    transition: .4s;
 
     &:hover {
       color: #f1f1f1;
+      background-color: $color-tertiary-dark;
     }
-    @media screen and (max-height: 450px){
-      font-size: 18px;
-    }
-  }
-  .closebtn {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    font-size: 3rem;
-    margin-left: 50px;
-  }
-  .navLinks {
-    height: 100%;
-    margin-left: 50px;
-    transition: all .3s;
   }
 }
+
 </style>
