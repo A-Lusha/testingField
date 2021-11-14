@@ -1,11 +1,11 @@
 <template>
 
 <nav class="sidenav">
-  <!-- <div
+  <div
     class="sidenav__background"
     :class="{ 'sidenav__background--closed': !navOpen }"
     @click="toggleNav"
-  ></div> -->
+  ></div>
 
   <div class="sidenav-content" :class="{ 'sidenav-content--closed': !navOpen }">
     <div class="sidenav-content__logo"></div>
@@ -36,7 +36,7 @@ export default {
   name: 'AppNav',
   data() {
     return {
-      navOpen: false,
+      navOpen: true,
       navLinks: [
         {
           name: 'Home',
@@ -77,14 +77,19 @@ export default {
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 5;
+  height: 100%;
   font-weight: 300;
 
   &__background {
-    z-index: 5;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
+    z-index: 5;
     overflow: auto;
-    background-color: rgba(0,0,0,0.7);
+    background-color: rgba($color-grey-dark-3, .9);
     transition: all .3s;
 
     &--closed{
@@ -95,9 +100,12 @@ export default {
 
   &-content {
     display: inline-block;
+    position: sticky;
+    top: 0;
+    left: 0;
     height: 100%;
-    width: 300px;
-    z-index: 10;
+    width: 275px;
+    z-index: 1000;
     overflow-x: hidden;
     background-color: $color-grey-dark-2;
     box-shadow: 0 1rem 2rem rgba($color-black,.2);
@@ -161,7 +169,7 @@ export default {
     position: absolute;
     height: 65px;
     width: 65px;
-    z-index: 20;
+    z-index: 200;
     margin: 20px;
     background-color: $color-tertiary-dark;
     border-radius: 50%;
@@ -199,7 +207,7 @@ export default {
           content: "";
           position: absolute;
           left: 0;
-          transition: all .2s;
+          transition: all .5s;
       }
 
       &::before { top: -.8rem; }
