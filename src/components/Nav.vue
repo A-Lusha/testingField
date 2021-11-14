@@ -125,8 +125,8 @@ export default {
     float: right;
     height: 45px;
     width: 45px;
-    /* top | right | bottom | left */
     margin: 15px 10px 15px 0;
+    /* ^ top | right | bottom | left - because I keep fucking forgetting */
     background-color: $color-tertiary-dark;
     cursor: pointer;
     border-radius: 50%;
@@ -136,6 +136,12 @@ export default {
       background-color: $color-tertiary-light;
       transform: translateY(-3px);
       box-shadow: 0 1rem 2rem rgba($color-black,.2);
+    }
+
+    &:active,
+    &:focus {
+        transform: translateY(-1px);
+        box-shadow: 0 .5rem 1rem rgba($color-black,.2);
     }
 
     &__icon {
@@ -176,19 +182,6 @@ export default {
       }
 
     }
-    // &__checkbox:checked + &__button &__icon {
-
-    // }
-
-    // &__checkbox:checked + &__button &__icon::before {
-    //     top: 0;
-    //     transform: rotate(135deg);
-    // }
-
-    // &__checkbox:checked + &__button &__icon::after {
-    //     top: 0;
-    //     transform: rotate(-135deg);
-    // }
   }
 }
 
