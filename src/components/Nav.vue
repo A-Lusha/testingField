@@ -1,20 +1,15 @@
 <template>
 
 <nav class="sidenav">
-  <div
+  <!-- <div
     class="sidenav__background"
     :class="{ 'sidenav__background--closed': !navOpen }"
     @click="toggleNav"
-  ></div>
+  ></div> -->
+
   <div class="sidenav-content" :class="{ 'sidenav-content--closed': !navOpen }">
-    <div class="sidenav-content__logo">
-      &nbsp;
-      <!--
-        section for a logo or tagline maybe? may change just to header.
-        felt like something should be here
-      -->
-    </div>
-    <span class="sidenav__spacer"></span>
+    <div class="sidenav-content__logo"></div>
+    <!-- <span class="sidenav__spacer"></span> -->
     <div class="sidenav-content__body">
       <router-link
         class="sidenav-content__link"
@@ -27,8 +22,9 @@
       </router-link>
     </div>
   </div>
+
   <div class="sidenav-btn" @click="toggleNav">
-    <span class="sidenav-btn__icon" :class="{ 'sidenav-btn__icon--opened': navOpen }">&nbsp;</span>
+    <span class="sidenav-btn__icon" :class="{ 'sidenav-btn__icon--opened': navOpen }"></span>
   </div>
 </nav>
 
@@ -78,15 +74,15 @@ export default {
 <style lang="scss" scoped>
 
 .sidenav {
+  position: absolute;
+  top: 0;
+  left: 0;
   font-weight: 300;
 
   &__background {
-    position: fixed;
     z-index: 5;
-    left: 0;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     overflow: auto;
     background-color: rgba(0,0,0,0.7);
     transition: all .3s;
@@ -98,9 +94,7 @@ export default {
   }
 
   &-content {
-    position: fixed;
-    top: 0;
-    left: 0;
+    display: inline-block;
     height: 100%;
     width: 300px;
     z-index: 10;
@@ -163,13 +157,12 @@ export default {
   }
 
   &-btn {
-    /* TODO (maybe): move button to other side when viewport is small*/
+    display: inline-block;
     position: absolute;
-    bottom: 15px;
-    right: 10px;
     height: 65px;
     width: 65px;
     z-index: 20;
+    margin: 20px;
     background-color: $color-tertiary-dark;
     border-radius: 50%;
     cursor: pointer;
