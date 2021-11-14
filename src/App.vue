@@ -18,6 +18,6 @@ export default {
 
 <style lang="scss">
 .container {
-  padding: 100px;
+  margin: 100px;
 }
 </style>

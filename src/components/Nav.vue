@@ -9,12 +9,23 @@
       &nbsp;
       <!-- section for a logo or tagline maybe? felt like something should be here -->
     </div>
-    <div class="sidenav-content__body" >
-      <router-link class="sidenav-content__link" to="/" @click="toggleNav">Home</router-link>
+    <div class="sidenav-content__body">
+      <router-link
+        class="sidenav-content__link"
+        v-for="link in navLinks"
+        :key="link.name"
+        :to="link.to"
+        @click="toggleNav"
+      >
+        {{ link.name }}
+      </router-link>
+      <!--
+        <router-link class="sidenav-content__link" to="/" @click="toggleNav">Home</router-link>
       <router-link class="sidenav-content__link" to="/About" @click="toggleNav">About</router-link>
+      -->
     </div>
     <div class="sidenav-content__footer">
-      <p>Maybe user profile info here?</p>
+      <p>Maybe user profile info here? Might have to consider seperate component.</p>
     </div>
   </div>
 </nav>
@@ -28,6 +39,16 @@ export default {
   data() {
     return {
       navOpen: false,
+      navLinks: [
+        {
+          name: 'Home',
+          to: '/',
+        },
+        {
+          name: 'About',
+          to: '/About',
+        },
+      ],
     };
   },
   methods: {
