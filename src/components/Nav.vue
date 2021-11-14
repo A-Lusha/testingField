@@ -7,7 +7,10 @@
   <div class="sidenav-content" :class="{ 'sidenav-content--closed': !navOpen }">
     <div class="sidenav-content__logo">
       &nbsp;
-      <!-- section for a logo or tagline maybe? felt like something should be here -->
+      <!--
+        section for a logo or tagline maybe? may change just to header.
+        felt like something should be here
+      -->
     </div>
     <div class="sidenav-content__body">
       <router-link
@@ -21,7 +24,8 @@
       </router-link>
     </div>
     <div class="sidenav-content__footer">
-      <p>Maybe user profile info here? Might have to consider seperate component.</p>
+      &nbsp;
+      <!-- some sort of copyright, info, or profile info? -->
     </div>
   </div>
 </nav>
