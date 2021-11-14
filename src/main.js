@@ -1,8 +1,11 @@
 import { createApp } from 'vue';
-import App from './App.vue';
-import './registerServiceWorker';
-import './scss/main.scss';
-import router from './router';
-import store from './store';
+import App from '@/App.vue';
 
-createApp(App).use(store).use(router).mount('#app');
+import '@/registerServiceWorker';
+import '@/assets/scss/main.scss';
+
+import router from '@/router';
+import store from '@/store';
+
+const vm = createApp(App).use(store).use(router);
+vm.mount('#app');
