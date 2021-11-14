@@ -19,10 +19,6 @@
       >
         {{ link.name }}
       </router-link>
-      <!--
-        <router-link class="sidenav-content__link" to="/" @click="toggleNav">Home</router-link>
-      <router-link class="sidenav-content__link" to="/About" @click="toggleNav">About</router-link>
-      -->
     </div>
     <div class="sidenav-content__footer">
       <p>Maybe user profile info here? Might have to consider seperate component.</p>
