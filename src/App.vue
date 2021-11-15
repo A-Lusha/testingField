@@ -19,5 +19,6 @@ export default {
 <style lang="scss">
 .container {
   margin: 10rem;
+  max-width: 970px
 }
 </style>
