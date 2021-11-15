@@ -22,8 +22,7 @@
       </router-link>
     </div>
   </div>
-
-  <div class="sidenav-btn" @click="toggleNav">
+ <div class="sidenav-btn" @click="toggleNav">
     <span class="sidenav-btn__icon" :class="{ 'sidenav-btn__icon--opened': navOpen }"></span>
   </div>
 </nav>
@@ -100,15 +99,16 @@ export default {
 
   &-content {
     display: inline-block;
+    vertical-align: top;
     position: sticky;
     top: 0;
     left: 0;
     height: 100%;
     width: 275px;
     z-index: 1000;
-    overflow-x: hidden;
+    overflow: hidden;
     background-color: $color-grey-dark-2;
-    box-shadow: 0 1rem 2rem rgba($color-black,.2);
+    box-shadow: 10px 0 5px -2px rgba($color-black,.2);
     transition: all .4s;
 
     &--closed{
@@ -166,6 +166,7 @@ export default {
 
   &-btn {
     display: inline-block;
+    vertical-align: top; // don't forget this prop when using inline-block, you moron
     position: absolute;
     height: 65px;
     width: 65px;
