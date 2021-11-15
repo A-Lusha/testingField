@@ -1,12 +1,10 @@
 <template>
 
 <nav class="sidenav">
-  <div
-    class="sidenav__background"
+  <div class="sidenav__background"
     :class="{ 'sidenav__background--closed': !navOpen }"
     @click="toggleNav"
   ></div>
-
   <div class="sidenav-content" :class="{ 'sidenav-content--closed': !navOpen }">
     <div class="sidenav-content__logo"></div>
     <!-- <span class="sidenav__spacer"></span> -->
@@ -35,7 +33,7 @@ export default {
   name: 'AppNav',
   data() {
     return {
-      navOpen: true,
+      navOpen: false,
       navLinks: [
         {
           name: 'Home',
@@ -73,7 +71,7 @@ export default {
 <style lang="scss" scoped>
 
 .sidenav {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 5;
@@ -102,11 +100,10 @@ export default {
     vertical-align: top;
     position: sticky;
     top: 0;
-    left: 0;
     height: 100%;
     width: 275px;
     z-index: 1000;
-    overflow: hidden;
+    overflow-x: hidden;
     background-color: $color-grey-dark-2;
     box-shadow: 10px 0 5px -2px rgba($color-black,.2);
     transition: all .4s;
@@ -167,7 +164,8 @@ export default {
   &-btn {
     display: inline-block;
     vertical-align: top; // don't forget this prop when using inline-block, you moron
-    position: absolute;
+    position: sticky;
+    top: 20px;
     height: 65px;
     width: 65px;
     z-index: 200;
