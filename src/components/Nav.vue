@@ -40,8 +40,8 @@ export default {
           to: '/',
         },
         {
-          name: 'About',
-          to: '/about',
+          name: 'Form',
+          to: '/form',
         },
         {
           name: 'Projects',
@@ -101,7 +101,7 @@ export default {
     position: sticky;
     top: 0;
     height: 100%;
-    width: 275px;
+    width: 270px;
     z-index: 1000;
     overflow-x: hidden;
     background-color: $color-grey-dark-2;
@@ -131,9 +131,9 @@ export default {
         }
     }
 
-    &__body {
-      // links container for organazation purposes
-    }
+    // &__body {
+    //   // links container for organazation purposes
+    // }
 
     &__link {
       display: block;
@@ -163,7 +163,7 @@ export default {
 
   &-btn {
     display: inline-block;
-    vertical-align: top; // don't forget this prop when using inline-block, you moron
+    vertical-align: top; // don't forget about this prop when using inline-block, you moron
     position: sticky;
     top: 20px;
     height: 65px;
@@ -172,12 +172,13 @@ export default {
     margin: 20px;
     background-color: $color-tertiary-dark;
     border-radius: 50%;
+    box-shadow: 0 1rem 1rem rgba($color-black,.3);
     cursor: pointer;
     transition: all .3s;
 
     &:hover {
       background-color: $color-tertiary-light;
-      box-shadow: 0 1rem 2rem rgba($color-black,.2);
+      box-shadow: 0 1rem 2rem rgba($color-black,.3);
       transform: translateY(-3px);
     }
 

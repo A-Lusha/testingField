@@ -1,7 +1,7 @@
 <template>
 <AppNav />
   <div class="container">
-    <router-view />
+    <RouterView />
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
 
 <style lang="scss">
 .container {
-  margin: 10rem;
-  max-width: 970px
+  margin: 12rem 2rem 2rem 2rem;
+  max-width: 970px;
 }
 </style>
