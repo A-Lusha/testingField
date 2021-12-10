@@ -1,45 +1,27 @@
 <template>
 <div class="slideform">
   <div class="slideform__part">
-    <input type="text" class="slideform__field" name="First Name" placeholder="First Name" id="" />
-      <button
-      class="slideform__btn slideform__btn--primary"
-      @mouseup.prevent="moveToPrevious">
-        Previous
-      </button>
-      <div class="spacer"></div>
-      <button href="#"
-      class="slideform__btn slideform__btn--secondary"
-      @mouseup.prevent="moveToNext">
-        Next
-      </button>
+    <input type="text" class="slideform__field" id="" v-model="formData.first_name" />
   </div>
   <div class="slideform__part slideform__part--right">
-    <input type="text" class="slideform__field" name="Last Name" placeholder="Last Name" id="" />
-      <button href="#"
-      class="slideform__btn slideform__btn--primary"
-      @mouseup.prevent="moveToPrevious">
-        Previous
-      </button>
-      <button href="#"
-      class="slideform__btn slideform__btn--secondary"
-      @mouseup.prevent="moveToNext">
-        Next
-      </button>
+    <input type="text" class="slideform__field" id="" v-model="formData.last_name" />
+
   </div>
   <div class="slideform__part slideform__part--right">
-    <input type="email" class="slideform__field" name="Email" placeholder="Email" id="" />
-      <button href="#"
-      class="slideform__btn slideform__btn--primary"
-      @mouseup.prevent="moveToPrevious">
-        Previous
-      </button>
-      <button href="#"
-      class="slideform__btn slideform__btn--secondary"
-      @mouseup.prevent="moveToNext">
-        Next
-      </button>
+    <input type="email" class="slideform__field" id="" v-model="formData.email"/>
   </div>
+  <button href="#"
+    class="slideform__btn slideform__btn--primary"
+    @mouseup.prevent="moveToPrevious"
+  >
+    Previous
+  </button>
+  <button href="#"
+    class="slideform__btn slideform__btn--secondary"
+    @mouseup.prevent="moveToNext"
+  >
+    Next
+  </button>
 </div>
 </template>
 
@@ -49,6 +31,11 @@ export default {
   data() {
     return {
       currentSlide: 0,
+      formData: {
+        first_name: 'First Name',
+        last_name: 'Last Name',
+        email: 'Email',
+      },
     };
   },
   computed: {
@@ -79,8 +66,6 @@ export default {
   height: 50vh;
   min-height: 350px;
   background-color: $color-grey-dark-2;
-  display: flex;
-  justify-content: space-between;
 
   &__part {
     position: absolute;
@@ -111,6 +96,9 @@ export default {
 
   &__btn {
     display: inline-block;
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
     width: 10rem;
     padding: 1rem;
     text-align: center;
@@ -118,6 +106,7 @@ export default {
 
     &--primary{
       background-color: $color-primary;
+      transform: translate(-100%);
     }
     &--secondary{
       background-color: $color-secondary-dark;
@@ -125,8 +114,4 @@ export default {
   }
 }
 
-.spacer {
-  display: inline-block;
-  margin: 0 auto;
-}
 </style>

@@ -23,8 +23,9 @@ export default {
     text-align: center;
   }
   span {
-    border: solid 2px $color-primary;
     padding: .5rem 2rem;
+    border: solid 2px $color-primary;
+    border-radius: 25%;
     background-color: $color-grey-dark-1;
   }
 </style>

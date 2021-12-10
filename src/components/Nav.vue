@@ -44,8 +44,8 @@ export default {
           to: '/form',
         },
         {
-          name: 'Projects',
-          to: '/projects',
+          name: 'List',
+          to: '/list',
         },
         {
           name: 'Contact',
@@ -113,6 +113,7 @@ export default {
       background-color: inherit;
       box-shadow: none;
       overflow-y: hidden;
+      pointer-events: none;
       width: 0;
       opacity: 0;
     }
