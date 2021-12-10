@@ -73,7 +73,6 @@ export default {
   methods: {
     sortSales() {
       this.sales.sort((a, b) => a.status + b.status);
-      console.log(this.sales);
     },
   },
 };
