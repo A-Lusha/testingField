@@ -11,16 +11,27 @@
     </ul>
   </main>
   <article  v-for="(sale,i) in sales" :key="i" class="row" :class="sale.type">
-    <ul>
-      <li><router-link :to="sale.url">{{ sale.name }}</router-link></li>
-      <li>{{ sale.email }}</li>
-      <li>{{ sale.phone }}</li>
-      <li>{{ sale.status }}</li>
-      <li>button here</li>
-    </ul>
-    <ul class="more-content">
-      <li>{{ sale.notes }}</li>
-    </ul>
+      <ul>
+        <li>
+          <router-link
+            class="stretched-link"
+            :to="{
+              name: 'Detail',
+              params: {
+                id: sale.id
+              }
+          }">
+            {{ sale.name }}
+          </router-link>
+      </li>
+        <li>{{ sale.email }}</li>
+        <li>{{ sale.phone }}</li>
+        <li>{{ sale.status }}</li>
+        <li>button here</li>
+      </ul>
+      <ul class="more-content">
+        <li>{{ sale.notes }}</li>
+      </ul>
   </article>
 </section>
 </template>
@@ -32,47 +43,47 @@ export default {
     return {
       sales: [
         {
+          id: 1,
           name: 'Alex',
           phone: '555-555-5555',
           email: 'test@test.com',
           type: 'nfl',
-          status: 1,
+          status: 'Assigned',
           notes: 'This guy is a prick',
-          url: '/form',
         },
         {
+          id: 2,
           name: 'Chris',
           phone: '555-555-5555',
           email: 'test@test.com',
           type: 'nhl',
-          status: 2,
+          status: 'Contacted',
           notes: 'This guy is, in fact, also a prick',
-          url: 'http://test.com/',
         },
         {
+          id: 3,
           name: 'Fucko',
           phone: '555-555-5555',
           email: 'test@test.com',
           type: 'mlb',
-          status: 4,
+          status: 'Scheduled',
           notes: 'An actually nice guy',
-          url: 'http://test.com/',
         },
         {
-          name: 'Your Mother',
+          id: 4,
+          name: 'Your Mom',
           phone: '555-555-5555',
           email: 'test@test.com',
           type: 'pga',
-          status: 6,
-          notes: 'I fucked this lady',
-          url: 'http://test.com/',
+          status: 'Fucked',
+          notes: 'Goes to college',
         },
       ],
     };
   },
   methods: {
     sortSales() {
-      this.sales.sort((a, b) => a.status + b.status);
+      this.sales.sort((a, b) => a.id + b.id);
     },
   },
 };
@@ -162,7 +173,7 @@ export default {
   }
 }
 .title {
-  padding:25px 0 5px 0;
+  padding:20px 0 5px 0;
   height:7.5rem;
   font-size:0;
   background-color:$light-bg;
@@ -195,5 +206,4 @@ ul.more-content li {
     font-size:11px;
   }
 }
-
 </style>

@@ -23,7 +23,7 @@ export default {
 
 <style lang="scss">
 .container {
-  margin: 12rem 10rem 2rem 10rem;
+  margin: 12rem 5rem 5rem 5rem;
   max-width: 970px;
 }
 </style>
