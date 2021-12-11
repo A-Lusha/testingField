@@ -27,7 +27,7 @@
         <li>{{ sale.email }}</li>
         <li>{{ sale.phone }}</li>
         <li>{{ sale.status }}</li>
-        <li>button here</li>
+        <li><AppButton label="Fuck" :action="sortSales" /></li>
       </ul>
       <ul class="more-content">
         <li>{{ sale.notes }}</li>
@@ -37,8 +37,13 @@
 </template>
 
 <script>
+import AppButton from '@/components/Button.vue';
+
 export default {
   name: 'List',
+  components: {
+    AppButton,
+  },
   data() {
     return {
       sales: [
@@ -85,6 +90,9 @@ export default {
     sortSales() {
       this.sales.sort((a, b) => a.id + b.id);
     },
+    testFunc(e){
+      console.log(e);
+    }
   },
 };
 
@@ -154,7 +162,7 @@ export default {
 
 /* rows */
 .row {
-  padding:20px 0;
+  padding:1rem 0;
   height:8rem;
   font-size:0;
   position:relative;
@@ -164,7 +172,7 @@ export default {
 }
 .row:hover {
   background-color:lighten($dark-bg, 10%);
-  height:12rem;
+  height:15rem;
   @media only screen and (max-width : 767px) {
     height:85px;
   }
@@ -172,6 +180,7 @@ export default {
     height:105px;
   }
 }
+
 .title {
   padding:20px 0 5px 0;
   height:7.5rem;
@@ -184,7 +193,6 @@ export default {
   background-color:$light-bg;
   border-left:3px solid lighten($light-bg, 100%);
 }
-
 .title-hide {
   @media only screen and (max-width:767px) {
     display:none;
