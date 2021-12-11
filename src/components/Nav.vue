@@ -47,14 +47,14 @@ export default {
           name: 'List',
           to: '/list',
         },
-        {
-          name: 'Contact',
-          to: '/contact',
-        },
-        {
-          name: 'FAQs',
-          to: '/faqs',
-        },
+        // {
+        //   name: 'Contact',
+        //   to: '/contact',
+        // },
+        // {
+        //   name: 'FAQs',
+        //   to: '/faqs',
+        // },
       ],
     };
   },
@@ -77,6 +77,11 @@ export default {
   z-index: 5;
   height: 100%;
   font-weight: 300;
+  pointer-events:none;
+
+  * {
+    pointer-events:auto;
+  }
 
   &__background {
     position: fixed;
