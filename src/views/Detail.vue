@@ -3,7 +3,7 @@
   <h1>{{ detail.name }}</h1>
   <p>{{ detail.phone }}</p>
   <p>{{ detail.email }}</p>
-  <textarea v-model="detail.notes" rows="4" cols="50"></textarea>
+  <textarea class="detail__notes" v-model="detail.notes" rows="4" cols="50"></textarea>
   <br>
   <router-link to="/list">Back</router-link>
 </div>
@@ -68,6 +68,22 @@ export default {
 };
 </script>
 
-<style>
-
+<style scoped>
+.detail__notes {
+  padding: 6px 12px;
+  background: rgb(31, 32, 35);
+  border: 1px solid rgb(60, 63, 68);
+  border-radius: 4px;
+  font-size: 13px;
+  color: rgb(247, 248, 248);
+  height: 46px;
+  appearance: none;
+  transition: border 0.15s ease 0s;
+  :focus{
+      outline: none;
+      box-shadow: none;
+      border-color: rgb(100, 153, 255);
+  }
+}
+                
 </style>
