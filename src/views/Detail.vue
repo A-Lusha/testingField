@@ -68,7 +68,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .detail__notes {
   padding: 6px 12px;
   background: rgb(31, 32, 35);
@@ -79,7 +79,8 @@ export default {
   height: 46px;
   appearance: none;
   transition: border 0.15s ease 0s;
-  :focus{
+
+  :focus {
       outline: none;
       box-shadow: none;
       border-color: rgb(100, 153, 255);
