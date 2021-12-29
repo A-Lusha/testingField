@@ -17,10 +17,9 @@
             class="stretched-link"
             :to="{
               name: 'Detail',
-              params: {
-                id: sale.id
-              }
-          }">
+              params: { id: sale.id }
+            }"
+          >
             {{ sale.name }}
           </router-link>
       </li>
@@ -124,6 +123,7 @@ export default {
 .wrapper {
   width:100%;
   max-width:1000px;
+  min-width: 615px;
   margin:20px auto 100px auto;
   padding:0;
   background:$light-bg;
@@ -146,10 +146,10 @@ export default {
   width:20%;
   box-sizing:border-box;
   @media only screen and (max-width:767px) and (min-width:480px) {
-    font-size:13px;
+    font-size:$small-font-size;
   }
   @media only screen and (max-width:479px) {
-    font-size:13px;
+    font-size:$small-font-size;
   }
 }
 
